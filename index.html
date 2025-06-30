@@ -58,49 +58,49 @@
                     <p class="mb-6 text-stone-600">This checklist covers a standard morning or evening visit. Click on each item as you complete it. You can reset the list for your next visit.</p>
                     <ul id="checklist" class="space-y-4">
                         <li class="checklist-item flex items-start space-x-4 p-4 rounded-lg bg-stone-50 cursor-pointer transition-all hover:bg-stone-100">
-                            <span class="icon text-2xl text-stone-400">✅</span>
+                            <span class="icon text-2xl text-stone-400">☐</span>
                             <div>
                                 <h3 class="font-semibold">Enter & Greet the Pups</h3>
                                 <p class="text-sm text-stone-500">Use the back door key. The dogs are in the mudroom. Give them some love!</p>
                             </div>
                         </li>
                         <li class="checklist-item flex items-start space-x-4 p-4 rounded-lg bg-stone-50 cursor-pointer transition-all hover:bg-stone-100">
-                            <span class="icon text-2xl text-stone-400">✅</span>
+                            <span class="icon text-2xl text-stone-400">☐</span>
                             <div>
                                 <h3 class="font-semibold">Feed Both Dogs</h3>
                                 <p class="text-sm text-stone-500">Give each dog 1 & 1/4 cups of food. The food container is in the mudroom.</p>
                             </div>
                         </li>
                         <li class="checklist-item flex items-start space-x-4 p-4 rounded-lg bg-stone-50 cursor-pointer transition-all hover:bg-stone-100">
-                             <span class="icon text-2xl text-stone-400">✅</span>
+                             <span class="icon text-2xl text-stone-400">☐</span>
                             <div>
                                 <h3 class="font-semibold">Refill Water Bowl</h3>
                                 <p class="text-sm text-stone-500">Top up their water using the large water dispenser. Make sure it's full.</p>
                             </div>
                         </li>
                         <li class="checklist-item flex items-start space-x-4 p-4 rounded-lg bg-yellow-50 border-l-4 border-yellow-400 cursor-pointer transition-all hover:bg-yellow-100">
-                             <span class="icon text-2xl text-stone-400">✅</span>
+                             <span class="icon text-2xl text-stone-400">☐</span>
                             <div>
                                 <h3 class="font-semibold text-yellow-800">CRITICAL: Secure the Yard</h3>
                                 <p class="text-sm text-yellow-700">Before letting them out, check that the main yard gate, garage service door, and main garage door are all SHUT TIGHT.</p>
                             </div>
                         </li>
                         <li class="checklist-item flex items-start space-x-4 p-4 rounded-lg bg-stone-50 cursor-pointer transition-all hover:bg-stone-100">
-                             <span class="icon text-2xl text-stone-400">✅</span>
+                             <span class="icon text-2xl text-stone-400">☐</span>
                             <div>
                                 <h3 class="font-semibold">Backyard & Potty Time</h3>
                                 <p class="text-sm text-stone-500">Let them run around in the secure backyard.</p>
                             </div>
                         </li>
                         <li class="checklist-item flex items-start space-x-4 p-4 rounded-lg bg-stone-50 cursor-pointer transition-all hover:bg-stone-100">
-                             <span class="icon text-2xl text-stone-400">✅</span>
+                             <span class="icon text-2xl text-stone-400">☐</span>
                             <div>
                                 <h3 class="font-semibold">Bring Dogs Inside</h3>
                                 <p class="text-sm text-stone-500">Lead them back into the mudroom/kids' room area behind their gate.</p>
                             </div>
                         </li>
                         <li class="checklist-item flex items-start space-x-4 p-4 rounded-lg bg-stone-50 cursor-pointer transition-all hover:bg-stone-100">
-                             <span class="icon text-2xl text-stone-400">✅</span>
+                             <span class="icon text-2xl text-stone-400">☐</span>
                             <div>
                                 <h3 class="font-semibold">Lock Up Securely</h3>
                                 <p class="text-sm text-stone-500">Make sure the back door is locked when you leave.</p>
@@ -217,6 +217,12 @@
             checklistItems.forEach(item => {
                 item.addEventListener('click', () => {
                     item.classList.toggle('checklist-item-done');
+                    const icon = item.querySelector('.icon');
+                    if (item.classList.contains('checklist-item-done')) {
+                        icon.textContent = '✅';
+                    } else {
+                        icon.textContent = '☐';
+                    }
                 });
             });
 
@@ -224,6 +230,8 @@
             resetButton.addEventListener('click', () => {
                 checklistItems.forEach(item => {
                     item.classList.remove('checklist-item-done');
+                    const icon = item.querySelector('.icon');
+                    icon.textContent = '☐';
                 });
             });
         });
